@@ -1,0 +1,36 @@
+name: "Networking Infrastructure CI"
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "terraform/**"
+      - "infraflow.config.yaml"
+      - ".github/workflows/infraflow-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  governance-gate:
+    name: "InfraFlow Governance Gate"
+    uses: TM-threemavithana/infraflow/.github/workflows/reusable-tf-governance.yml@be51718f06a2662099500a710e93e6e8201b4f1c
+    with:
+      config-file: "infraflow.config.yaml"
+      working-directory: "."
+      platform-sha: "be51718f06a2662099500a710e93e6e8201b4f1c"
+      expected-adapter: "aws"
+
+  aws-speculative-plan:
+    name: "AWS Speculative Plan (Cloud-Free)"
+    needs: [governance-gate]
+    uses: TM-threemavithana/infraflow/.github/workflows/reusable-tf-aws.yml@be51718f06a2662099500a710e93e6e8201b4f1c
+    with:
+      aws-region: "us-east-1"
+      terraform-version: "1.10.4"
+      working-directory: "terraform"
+      environment: "dev"
+      backend-bucket: "net-infraflow-tfstate"
+      backend-key: "env/dev/terraform.tfstate"
+      enable-aws-auth: false
