@@ -6,7 +6,7 @@ terraform_dir: "terraform"
 environment: "dev"
 adapter: "aws"
 platform_ref: "TM-threemavithana/infraflow"
-platform_sha: "8fd761bb42165435e1162f37ee39df15d5532b09"
+platform_sha: "11a9de16731abc7dd29b083072472889d3c409cf"
 terraform_version: "1.10.4"
 security_controls:
   enforce_mandatory_scanners: true
