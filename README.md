@@ -6,7 +6,7 @@ Independent consumer repository validating the **InfraFlow Internal Developer Pl
 - **Responsible Team:** `platform-networking`
 - **Target Adapter:** `aws`
 - **InfraFlow Platform Reference:** `TM-threemavithana/infraflow`
-- **Pinned Platform SHA:** `48bb7e9a63c6a68db491227331d1dddfbb49e331`
+- **Pinned Platform SHA:** `8fd761bb42165435e1162f37ee39df15d5532b09`
 
 ## Architecture & Integration
 

@@ -15,11 +15,12 @@ permissions:
 jobs:
   aws-speculative-plan:
     name: "AWS Speculative Plan (Cloud-Free)"
-    uses: TM-threemavithana/infraflow/.github/workflows/reusable-tf-aws.yml@48bb7e9a63c6a68db491227331d1dddfbb49e331
+    uses: TM-threemavithana/infraflow/.github/workflows/reusable-tf-aws.yml@8fd761bb42165435e1162f37ee39df15d5532b09
     with:
+      aws-region: "us-east-1"
       terraform-version: "1.10.4"
       working-directory: "terraform"
       environment: "dev"
-      s3-bucket: "net-infraflow-tfstate"
-      s3-key: "env/dev/terraform.tfstate"
+      backend-bucket: "net-infraflow-tfstate"
+      backend-key: "env/dev/terraform.tfstate"
       enable-aws-auth: false
