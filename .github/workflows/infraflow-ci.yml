@@ -15,17 +15,17 @@ permissions:
 jobs:
   governance-gate:
     name: "InfraFlow Governance Gate"
-    uses: TM-threemavithana/infraflow/.github/workflows/reusable-tf-governance.yml@1630e61952c99460b37eb775c11b190d0e1ab81f
+    uses: TM-threemavithana/infraflow/.github/workflows/reusable-tf-governance.yml@be51718f06a2662099500a710e93e6e8201b4f1c
     with:
       config-file: "infraflow.config.yaml"
       working-directory: "."
-      platform-sha: "1630e61952c99460b37eb775c11b190d0e1ab81f"
+      platform-sha: "be51718f06a2662099500a710e93e6e8201b4f1c"
       expected-adapter: "aws"
 
   aws-speculative-plan:
     name: "AWS Speculative Plan (Cloud-Free)"
     needs: [governance-gate]
-    uses: TM-threemavithana/infraflow/.github/workflows/reusable-tf-aws.yml@1630e61952c99460b37eb775c11b190d0e1ab81f
+    uses: TM-threemavithana/infraflow/.github/workflows/reusable-tf-aws.yml@be51718f06a2662099500a710e93e6e8201b4f1c
     with:
       aws-region: "us-east-1"
       terraform-version: "1.10.4"
