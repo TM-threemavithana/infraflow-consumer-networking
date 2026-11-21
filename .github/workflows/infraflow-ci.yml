@@ -1,0 +1,25 @@
+name: "Networking Infrastructure CI"
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "terraform/**"
+      - "infraflow.config.yaml"
+      - ".github/workflows/infraflow-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  aws-speculative-plan:
+    name: "AWS Speculative Plan (Cloud-Free)"
+    uses: TM-threemavithana/infraflow/.github/workflows/reusable-tf-aws.yml@48bb7e9a63c6a68db491227331d1dddfbb49e331
+    with:
+      terraform-version: "1.10.4"
+      working-directory: "terraform"
+      environment: "dev"
+      s3-bucket: "net-infraflow-tfstate"
+      s3-key: "env/dev/terraform.tfstate"
+      enable-aws-auth: false

@@ -1,0 +1,14 @@
+version: "1.0"
+consumer_id: "consumer-networking"
+team: "platform-networking"
+workload_type: "networking"
+terraform_dir: "terraform"
+environment: "dev"
+adapter: "aws"
+platform_ref: "TM-threemavithana/infraflow"
+platform_sha: "48bb7e9a63c6a68db491227331d1dddfbb49e331"
+terraform_version: "1.10.4"
+security_controls:
+  enforce_mandatory_scanners: true
+  fail_on_destructive: false
+  max_allowed_deletions: 10
